@@ -56,3 +56,15 @@ def fixed_xor(bytes1: bytes, bytes2: bytes) -> bytes:
         return
 
     return bytes(a^b for a, b in zip(bytes1, bytes2))
+
+#single character xor decrypt
+def single_char_decrypt(c: str, k0: str) -> str:
+    ka = []
+    for i in range(0, len(c), 2):
+        ka.append(k0)
+    k = "".join(ka)
+
+    cb = hex_to_bytes(c)
+    kb = hex_to_bytes(k)
+    m = fixed_xor(cb, kb)
+    return str(m)
