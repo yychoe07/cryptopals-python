@@ -48,4 +48,11 @@ def bytes_to_b64(bytes_data: bytes) -> str:
         val = B64_ALPHABET[idx0] + B64_ALPHABET[idx1] + x2 + x3
         out.append(val)
     return "".join(out)
-        
+
+
+# XOR two bytes of equal length
+def fixed_xor(bytes1: bytes, bytes2: bytes) -> bytes:
+    if len(bytes1) != len(bytes2):
+        return
+
+    return bytes(a^b for a, b in zip(bytes1, bytes2))
